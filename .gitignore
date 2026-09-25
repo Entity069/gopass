@@ -1,0 +1,11 @@
+/data/
+/bin/
+/coverage.out
+/coverage.html
+.env
+*.db
+*.db-wal
+*.db-shm
+*.key
+*.test
+__pycache__/
