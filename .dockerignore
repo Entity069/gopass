@@ -1,0 +1,10 @@
+.git
+.env
+data
+bin
+coverage.*
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/*.key
+**/__pycache__

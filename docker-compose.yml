@@ -1,0 +1,28 @@
+services:
+  login:
+    build:
+      context: .
+      target: runtime
+    image: cli-login:local
+    stdin_open: true
+    tty: true
+    environment:
+      APP_DATA_DIR: /data
+      APP_SESSION_TTL: ${APP_SESSION_TTL:-30m}
+      APP_MAX_ATTEMPTS: ${APP_MAX_ATTEMPTS:-5}
+      APP_LOCKOUT_DURATION: ${APP_LOCKOUT_DURATION:-15m}
+      APP_ISSUER: ${APP_ISSUER:-CLI Login}
+    volumes:
+      - login-data:/data
+    network_mode: none
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    mem_limit: 256m
+    stop_grace_period: 10s
+
+volumes:
+  login-data:
